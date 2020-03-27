@@ -1,6 +1,7 @@
 import 'package:convex_bottom_bar/convex_bottom_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:sozluk/page/favorite_page.dart';
 import 'package:sozluk/page/history_page.dart';
 import 'package:sozluk/util/app_constant.dart';
 
@@ -19,6 +20,8 @@ class _HomePageState extends State<HomePage> {
   int _currentTab = 1;
   var size;
 
+
+
   @override
   Widget build(BuildContext context) {
     size = MediaQuery.of(context).size;
@@ -29,9 +32,7 @@ class _HomePageState extends State<HomePage> {
           ? HistoryPage()
           : _currentTab == 1
               ? _body()
-              : Center(
-                  child: Text('Todo'),
-                ),
+              : FavoritePage(),
       bottomNavigationBar: _bottomNavigationBar,
     );
   }
@@ -43,27 +44,28 @@ class _HomePageState extends State<HomePage> {
       );
 
   Widget get _bottomNavigationBar => ConvexAppBar(
-        color: AppConstant.colorParagraph2,
-        backgroundColor: Colors.white,
-        activeColor: AppConstant.colorPrimary,
-        elevation: 0.5,
+          color: AppConstant.colorParagraph2,
+          backgroundColor: Colors.white,
+          activeColor: AppConstant.colorPrimary,
+          elevation: 0.5,
 
-        //height causes layout overflow on some devies
-        //height: 56,
-        onTap: (int val) {
-          if (val == _currentTab) return;
-          setState(() {
-            _currentTab = val;
-          });
-        },
-        initialActiveIndex: _currentTab,
-        style: TabStyle.fixedCircle,
-        items: <TabItem>[
-          TabItem(icon: Icons.history, title: ''),
-          TabItem(icon: Icons.search, title: ''),
-          TabItem(icon: Icons.bookmark_border, title: ''),
-        ],
-      );
+          //height causes layout overflow on some devies
+          //height: 56,
+          onTap: (int val) {
+            if (val == _currentTab) return;
+            setState(() {
+              _currentTab = val;
+            });
+          },
+          initialActiveIndex: _currentTab,
+          style: TabStyle.fixedCircle,
+          items: <TabItem>[
+            TabItem(icon: Icons.history, title: ''),
+            TabItem(icon: Icons.search, title: ''),
+            TabItem(icon: Icons.bookmark_border, title: ''),
+
+      ],
+  );
 
   Widget get _pageBody => Column(
         children: <Widget>[

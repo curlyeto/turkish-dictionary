@@ -53,5 +53,6 @@ class AppConstant {
   //region Assets
   static final String svgLogo = "assets/tdk_logo.svg";
   static final String svgLogoRed = "assets/tdk_logo_red.svg";
+  static final String favoriteicon= "assets/vector.svg";
   //endregion
 }
